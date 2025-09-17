@@ -1,0 +1,242 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+    background-color: #f0f2f5;
+}
+
+#app-wrapper {
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    max-height: 800px;
+    position: relative;
+    font-size: 18px; /* --- 全体の基準フォントサイズを大きくしました --- */
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #008000;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+main {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-nav {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+.tab-button {
+    flex: 1;
+    padding: 12px 5px; /* --- パディングを調整 --- */
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1em; /* --- タブの文字サイズを調整 --- */
+    font-weight: bold;
+    color: #888;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+.tab-button.active {
+    color: #008000;
+    border-bottom: 3px solid #008000;
+}
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
+
+#result-area {
+    flex-grow: 1;
+}
+
+.screen { 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+}
+.screen.active { 
+    display: block; 
+}
+
+.input-group { 
+    margin-bottom: 20px; 
+}
+.input-group label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: bold; 
+    color: #333; 
+}
+.input-group i { 
+    margin-right: 8px; 
+    color: #008000; 
+}
+.input-group input { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    box-sizing: border-box; 
+    font-size: 1em; 
+}
+
+button { 
+    background: none; 
+    border: none; 
+    padding: 0; 
+    font: inherit; 
+    cursor: pointer; 
+    outline: inherit; 
+}
+#search-button, #back-to-home-button { 
+    width: 100%; 
+    padding: 15px; 
+    border-radius: 8px; 
+    font-size: 1.1em; 
+    font-weight: bold; 
+    color: white; 
+    transition: background-color 0.2s; 
+}
+#search-button { 
+    background-color: #ff8c00; 
+}
+#search-button:hover { 
+    background-color: #e67e00; 
+}
+#back-to-home-button { 
+    margin-top: 20px; 
+    background-color: #888; 
+}
+#back-to-home-button:hover { 
+    background-color: #777; 
+}
+
+#loading-screen { 
+    display: none; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    color: #555; 
+    font-size: 1.2em; 
+    background-color: #fff; 
+    border-radius: 10px; 
+}
+.spinner { 
+    width: 60px; 
+    height: 60px; 
+    border: 5px solid #f3f3f3; 
+    border-top: 5px solid #008000; 
+    border-radius: 50%; 
+    animation: spin 1s linear infinite; 
+    margin-bottom: 20px; 
+}
+@keyframes spin { 
+    0% { transform: rotate(0deg); } 
+    100% { transform: rotate(360deg); } 
+}
+
+.route-card { 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 20px; 
+    background-color: #fafafa; 
+}
+.route-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: baseline; 
+    margin-bottom: 15px; 
+}
+.route-header h2 { 
+    margin: 0; 
+    font-size: 1.4em; 
+    color: #008000; 
+}
+.price { 
+    font-size: 1.5em; 
+    font-weight: bold; 
+    color: #d35400; 
+}
+.timeline { 
+    position: relative; 
+    padding-left: 30px; 
+    border-left: 3px solid #008000; 
+}
+.timeline-item { 
+    margin-bottom: 25px; /* --- 間隔を調整 --- */
+    position: relative; 
+}
+.timeline-item:last-child { 
+    margin-bottom: 0; 
+}
+.timeline-item::before { 
+    content: ''; 
+    position: absolute; 
+    left: -37px; 
+    top: 5px; 
+    width: 15px; 
+    height: 15px; 
+    background-color: white; 
+    border: 3px solid #008000; 
+    border-radius: 50%; 
+    z-index: 1; 
+}
+.time { 
+    font-weight: bold; 
+    font-size: 1.6em; /* --- 時間のフォントサイズを特に大きくしました --- */
+    margin-bottom: 5px; /* --- 時間の下に余白を追加 --- */
+}
+.station { 
+    font-size: 1.2em; 
+    font-weight: bold; 
+}
+.details { 
+    color: #555; 
+    margin-top: 8px; /* --- 詳細テキストの上の余白を調整 --- */
+    line-height: 1.5; /* --- 行間を調整 --- */
+}
+
+.dokodemo-door {
+    text-align: center;
+}
+.dokodemo-door img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+.dokodemo-door h2 {
+    color: #008000;
+}

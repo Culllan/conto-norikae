@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>super乗り換え案内</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app-wrapper">
+        <div id="home-screen" class="screen active">
+            <div class="container">
+                <header>
+                    <h1>super乗り換え案内</h1>
+                </header>
+                <main>
+                    <div class="search-form">
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-train-subway"></i> 出発</label>
+                            <input type="text" id="start-station" value="心斎橋">
+                        </div>
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-train-subway"></i> 到着</label>
+                            <input type="text" id="end-station" value="梅田">
+                        </div>
+                        <button id="search-button">検索</button>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="loading-screen" class="screen">
+            <div class="spinner"></div>
+            <p>考え中...</p>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <div class="container">
+                 <header>
+                    <h1>検索結果</h1>
+                </header>
+                <main>
+                    <div class="tab-nav">
+                        <button class="tab-button active" data-tab="tab-recommend">おすすめ</button>
+                        <button class="tab-button" data-tab="tab-fast">速い</button>
+                        <button class="tab-button" data-tab="tab-cheap">安い</button>
+                        <button class="tab-button" data-tab="tab-easy">乗り換え少ない</button>
+                    </div>
+
+                    <div id="result-area">
+                    </div>
+                    
+                    <button id="back-to-home-button">ホームに戻る</button>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
