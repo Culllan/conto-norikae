@@ -33,9 +33,9 @@ body {
 header {
     background-color: #008000;
     color: white;
-    padding: 10px 20px; /* --- ヘッダーのパディングを小さくしました --- */
+    padding: 10px 20px;
     text-align: center;
-    font-size: 1.0em; /* --- ヘッダーのフォントサイズを小さくしました --- */
+    font-size: 1.0em;
     font-weight: bold;
     flex-shrink: 0;
 }
@@ -43,18 +43,22 @@ header {
 main {
     padding: 20px;
     flex-grow: 1;
-    overflow-y: auto; /* --- スクロール可能に設定 --- */
-    display: flex;
-    flex-direction: column;
+    overflow-y: auto;
 }
 
-/* --- 結果表示部分のスクロール位置を調整するCSSを追加 --- */
+/* ★★★ ここの部分を修正しました ★★★ */
+.screen {
+    display: none; /* JSでアクティブなものだけ block に変更 */
+}
+.screen.active {
+    display: block;
+}
+/* ★★★ position:absolute を削除しました ★★★ */
+
+
 #result-screen main {
-    scroll-behavior: smooth; /* スムーズなスクロール */
-    scroll-padding-top: 0; /* 上からの余白をなしに */
+    scroll-behavior: smooth;
 }
-/* --- これにより、tab-contentがactiveになったときに上部にスクロールされます --- */
-
 
 .tab-nav {
     display: flex;
@@ -86,18 +90,6 @@ main {
 
 #result-area {
     flex-grow: 1;
-}
-
-.screen {
-    display: none;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.screen.active {
-    display: block;
 }
 
 .input-group {
@@ -154,14 +146,15 @@ button {
 }
 
 #loading-screen {
+    /* ローディング画面は中央に表示させたいので、Flexboxを適用 */
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #555;
-    font-size: 1.2em;
-    background-color: #fff;
-    border-radius: 10px;
+    height: 100%;
+}
+#loading-screen.active {
+    display: flex;
 }
 .spinner {
     width: 60px;
